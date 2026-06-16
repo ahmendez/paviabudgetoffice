@@ -2,19 +2,30 @@
 <html>
 <head>
   <title>Attendance Scanner</title>
+
+  <style>
+    body{
+      text-align:center;
+      font-family:Arial, sans-serif;
+    }
+
+    #reader{
+      width:1200px;
+      margin:auto;
+    }
+
+    #result{
+  font-size:40px;
+  font-weight:bold;
+  padding:20px;
+}
+    
+    h2{
+      font-size:36px;
+    }
+  </style>
+
 </head>
-
-<body>
-
-<h2>QR Attendance Scanner</h2>
-
-<div id="reader"></div>
-
-<p id="result"></p>
-
-<script src="https://unpkg.com/html5-qrcode"></script>
-
-<script>
 
 const WEBAPP =
 "https://script.google.com/macros/s/AKfycbxSg_PSiaOauey6VNxoBBZrSCx-toPHKOA2RjOUNBq4qUSY5wbcSMO3yaNzsBFewmTh/exec";
@@ -38,9 +49,12 @@ function onScanSuccess(decodedText){
 
 new Html5QrcodeScanner(
   "reader",
-  {fps:10, qrbox:500}
+  {
+    fps:10,
+    qrbox:700
+  }
 ).render(onScanSuccess);
-
+  
 </script>
 
 </body>
