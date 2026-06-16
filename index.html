@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Scanner</title>
+</head>
+
+<body>
+
+<h2>QR Attendance Scanner</h2>
+
+<div id="reader"></div>
+
+<p id="result"></p>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+
+const WEBAPP =
+"https://script.google.com/macros/s/AKfycbxSg_PSiaOauey6VNxoBBZrSCx-toPHKOA2RjOUNBq4qUSY5wbcSMO3yaNzsBFewmTh/exec";
+
+function onScanSuccess(decodedText){
+
+  fetch(
+    WEBAPP + "?id=" + encodeURIComponent(decodedText)
+  )
+
+  .then(r => r.text())
+
+  .then(data => {
+
+      document.getElementById("result").innerHTML =
+      data;
+
+  });
+
+}
+
+new Html5QrcodeScanner(
+  "reader",
+  {fps:10, qrbox:250}
+).render(onScanSuccess);
+
+</script>
+
+</body>
+</html>
